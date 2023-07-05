@@ -2,10 +2,6 @@
 create user t_user with password '123';
 /*CREACION DE BASE DE DATOS*/
 CREATEDB taller WITH OWNER t_user;
-/*ASIGNAR PERMISO A T_USER PARA ADMINISTRASCION DE LA BASE DE DATOS*/
-GRANT CONNECT ON DATABASE taller TO t_user;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO t_user;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO t_user;
 
 /*CREACION DE TABLAS*/
 CREATE TABLE Personas(
@@ -29,6 +25,10 @@ CREATE TABLE Usuarios(
     primary key(IdUsuario),
     foreign key(IdPersona) references Personas(IdPersona)
 ); 
+/*ASIGNAR PERMISO A T_USER PARA ADMINISTRASCION DE LA BASE DE DATOS*/
+GRANT CONNECT ON DATABASE taller TO t_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO t_user;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO t_user;
 /*RELLENAR TABLAS*/
 INSERT INTO Personas (Nombre,Apellido1,Apellido2,Telefono,Cedula,Direccion,TipoPersona,Estado)
 VALUES ('Alexander','Cascante','Corrales','99995588',811553665,'Alajuela',true,true),
