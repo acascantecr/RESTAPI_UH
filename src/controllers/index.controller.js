@@ -26,7 +26,10 @@ const getUsersbyid = async (req,res)=>{
 const createUser = async (req,res)=>{
     const {nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado} = req.body;
     const response = await pool.query('INSERT INTO PERSONAS (nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',[nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado]);
-    console.log(response.rows);
+    console.log(response.rows[0]['idpersona']);
+    /*if (tipopersona=true) {
+        pool.query('INSERT INTO USUARIOS (idPersona,userid,password,estado) VALUES ($1,$2,$3,$4) RETURNING *',[response.rows[0]['idpersona'],nombre.substring(0,1)+apellido1,'Welcome',true]);        
+    }
     /*res.json({
         message:'Usuario agregado',
         body:{
