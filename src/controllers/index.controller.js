@@ -25,15 +25,15 @@ const getUsersbyid = async (req,res)=>{
 
 const createUser = async (req,res)=>{
     const {nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado} = req.body;
-    const response = await pool.query('INSERT INTO PERSONAS (nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)',[nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado]);
-    console.log(response);
-    res.json({
-        messge:'Usuario agregado',
+    const response = await pool.query('INSERT INTO PERSONAS (nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',[nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado]);
+    console.log(response.rows);
+    /*res.json({
+        message:'Usuario agregado',
         body:{
             user:{nombre,apellido1,apellido2,telefono,cedula,direccion,tipopersona,estado}
         }
-    });
-    res.send('user create');
+    });*/
+    res.status(200).json(response.rows);
 };
 
 const updateUser = async (req,res)=>{
