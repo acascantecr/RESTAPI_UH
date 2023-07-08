@@ -1,6 +1,6 @@
 # restapi
-RESTfull API con PostgreSQL Tranajo Universidad Hispanoamericana
-INTRODUCCION
+##RESTfull API con PostgreSQL Tranajo Universidad Hispanoamericana
+###INTRODUCCION </br>
 Esta apliacion es un CRUD que permite el registro de ususarios, la base de datos es una base pequeña que consta de dos tablas relacionadas, una llamada Personas y otra llamada usuarios,
 como es una base de datos de un taller se creo la tabla personas para regristrar los datos de todas las personas, en ese tabla hay un campo que se llama tipo persona, si el campo el falso
 quiere decir que esa informacion corresponde a un cliente y si el campo es verdadero significa que es un usuario del sistema, por lo que se registran datos adiconales en la tabla usuarios
